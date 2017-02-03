@@ -64,10 +64,10 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         [self GET:@"1.1/account/verify_credentials.json" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
             NSLog(@"user dictionary: %@", responseObject);
             User *user = [[User alloc] initWithDictionary:responseObject];
-            // Store the user id and screenname
+            // Store the user id and profile pic
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setValue:user.userId forKey:@"userId"];
-            [defaults setValue:user.screenname forKey:@"screenname"];
+            [defaults setURL:user.profileImageUrl forKey:@"profileImageURL"];
             [defaults synchronize];
             
             self.loginCompletion(user, nil);
@@ -82,13 +82,13 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
-- (void)getUser:(NSString *)screenname callback:(UserFetcherCallback)callback {
-    NSString *url = [NSString stringWithFormat:@"1.1/users/show.json?screen_name=%@", screenname];
+- (void)getUser:(NSString *)userId callback:(UserFetcherCallback)callback {
+    NSString *url = [NSString stringWithFormat:@"1.1/users/show.json?user_id=%@", userId];
     [self GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         User *user = [[User alloc] initWithDictionary:responseObject];
         callback(user, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Error fetching user %@", screenname);
+        NSLog(@"Error fetching user %@", userId);
         callback(nil, error);
     }];
 }
@@ -104,12 +104,24 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 }
 
 - (void)getUserTweets:(TweetListFetcherCallback)callback user:(User *)user {
-    NSString *url = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@&count=50", user.screenname];
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?user_id=%@&count=50", user.userId];
     [self GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         callback(tweets, nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error fetching tweets");
+        callback(nil, error);
+    }];
+}
+
+- (void)getUserMentions:(TweetListFetcherCallback)callback {
+    NSString *url = @"1.1/statuses/mentions_timeline.json?count=50";
+    [self GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"mentions: %@", responseObject);
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        callback(tweets, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Error fetching mentions");
         callback(nil, error);
     }];
 }
@@ -155,6 +167,30 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         NSLog(@"Error unretweeting tweet: %@", error);
         callback(nil, error);
     }];
+}
+
+- (void)sendTweet:(NSString *)tweetText callback:(TweetFetcherCallback)callback {
+    NSString *url = @"1.1/statuses/update.json";
+    //NSString *encodedTweet = [tweetText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    //NSLog(@"create tweet: %@", tweetText);
+    [self POST:url parameters:@{@"status":tweetText} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        callback([[Tweet alloc] initWithDictionary:responseObject], nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Error creating tweet: %@", error);
+        callback(nil, error);
+    }];
+
+}
+
+- (void)sendTweet:(NSString *)tweetText replyTo:(NSString *)replyTo callback:(TweetFetcherCallback)callback {
+    NSString *url = [NSString stringWithFormat:@"1.1/statuses/update.json?in_reply_to_status_id=%@", replyTo];
+    [self POST:url parameters:@{@"status":tweetText} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        callback([[Tweet alloc] initWithDictionary:responseObject], nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Error creating tweet: %@", error);
+        callback(nil, error);
+    }];
+    
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TweetListViewController.h"
 
-@interface MentionsViewController : UIViewController
+@interface MentionsViewController : TweetListViewController
 
 @end

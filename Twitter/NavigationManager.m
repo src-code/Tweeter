@@ -11,13 +11,14 @@
 #import "LoggedOutViewController.h"
 #import "TweetListViewController.h"
 #import "ProfileViewController.h"
-//#import "MentionsViewController.h"
+#import "MentionsViewController.h"
 #import "ComposeViewController.h"
 #import "TweetViewController.h"
 
 @interface NavigationManager ()
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, weak) TweetListViewController *tweetListViewController;
 @end
 
 @implementation NavigationManager
@@ -58,15 +59,15 @@
     TweetListViewController *tweetListVC = [[TweetListViewController alloc] initWithNibName:@"TweetListViewController" bundle:nil];
     tweetListVC.title = @"";
     ProfileViewController *profileVC = [[ProfileViewController alloc] initWithNibName:@"TweetListViewController" bundle:nil];
-    //MentionsViewController *mentionsVC = [[MentionsViewController alloc] initWithNibName:@"MentionsViewController" bundle:nil];
+    MentionsViewController *mentionsVC = [[MentionsViewController alloc] initWithNibName:@"TweetListViewController" bundle:nil];
     
     // Create tab items
     UITabBarItem *homeTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home-icon"] tag:0];
     tweetListVC.tabBarItem = homeTabBarItem;
     UITabBarItem *profileTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profile-icon"] tag:0];
     profileVC.tabBarItem = profileTabBarItem;
-    //UITabBarItem *mentionsTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Mentions" image:nil tag:0];
-    //mentionsVC.tabBarItem = mentionsTabBarItem;
+    UITabBarItem *mentionsTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Mentions" image:[UIImage imageNamed:@"account-icon"] tag:0];
+    mentionsVC.tabBarItem = mentionsTabBarItem;
 
     // Create navigation controllers
     UINavigationController *homeNavController = [[UINavigationController alloc] initWithRootViewController:tweetListVC];
@@ -81,15 +82,18 @@
     
     UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileVC];
     profileNavController.title = @"Profile";
-    //UINavigationController *mentionsNavController = [[UINavigationController alloc] initWithRootViewController:mentionsVC];
-    //mentionsNavController.title = @"Mentions";
+    UINavigationController *mentionsNavController = [[UINavigationController alloc] initWithRootViewController:mentionsVC];
+    mentionsNavController.title = @"Mentions";
     
     // Create tab bar view controller
     self.tabBarController = [[UITabBarController alloc] init];
     
     // Add navigation controllers to tab bar controller
-    self.tabBarController.viewControllers = @[homeNavController, profileNavController];
+    self.tabBarController.viewControllers = @[homeNavController, mentionsNavController, profileNavController];
 
+    // Save this for later when delegating from compose tweet
+    self.tweetListViewController = tweetListVC;
+    
     return self.tabBarController;
 }
 
@@ -103,6 +107,7 @@
 - (void)showCompose {
     ComposeViewController *composeVC = [[ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil];
     composeVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    composeVC.delegate = self.tweetListViewController;
     [self.tabBarController.selectedViewController presentViewController:composeVC animated:YES completion:nil];
 }
 

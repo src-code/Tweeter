@@ -6,4 +6,5 @@ target 'Twitter' do
   pod 'BDBOAuth1Manager'
   pod 'AFNetworking'
   pod 'Colours'
+  pod 'UITextView+Placeholder'
 end

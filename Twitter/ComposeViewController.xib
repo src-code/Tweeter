@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController">
             <connections>
+                <outlet property="lengthCounter" destination="UVx-4T-I5f" id="QMI-AT-5Wg"/>
+                <outlet property="profileImageView" destination="L3C-OP-eZU" id="Dge-nN-w9g"/>
+                <outlet property="tweetButton" destination="WEq-vh-jLn" id="XX1-GY-1ru"/>
+                <outlet property="tweetTextBox" destination="Rmb-0f-TYz" id="VbL-al-wM8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,12 +34,57 @@
                         <action selector="onClose:" destination="-1" eventType="touchUpInside" id="UFP-xc-m5x"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L3C-OP-eZU">
+                    <rect key="frame" x="16" y="24" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ENP-WP-9VL"/>
+                        <constraint firstAttribute="height" constant="40" id="yAD-ty-PTB"/>
+                    </constraints>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-0f-TYz">
+                    <rect key="frame" x="16" y="80" width="351" height="250"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="NBN-kw-4sd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="What's happening?"/>
+                    </userDefinedRuntimeAttributes>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEq-vh-jLn">
+                    <rect key="frame" x="309" y="338" width="42" height="30"/>
+                    <state key="normal" title="Tweet"/>
+                    <connections>
+                        <action selector="onSendTweet:" destination="-1" eventType="touchUpInside" id="UL3-Cy-aKa"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVx-4T-I5f">
+                    <rect key="frame" x="16" y="342" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="zfN-B8-eOo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.66491001839999997" green="0.72106915709999997" blue="0.76282358169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Rmb-0f-TYz" firstAttribute="top" secondItem="L3C-OP-eZU" secondAttribute="bottom" constant="16" id="AKp-AT-Kgh"/>
                 <constraint firstAttribute="trailing" secondItem="24N-FJ-LjA" secondAttribute="trailing" constant="8" id="GoW-PD-Rga"/>
+                <constraint firstItem="UVx-4T-I5f" firstAttribute="centerY" secondItem="WEq-vh-jLn" secondAttribute="centerY" id="IrT-fc-iRC"/>
+                <constraint firstItem="L3C-OP-eZU" firstAttribute="top" secondItem="24N-FJ-LjA" secondAttribute="bottom" constant="-26" id="JbJ-fF-J7Z"/>
+                <constraint firstAttribute="trailing" secondItem="Rmb-0f-TYz" secondAttribute="trailing" constant="8" id="b2f-wz-cfE"/>
+                <constraint firstItem="Rmb-0f-TYz" firstAttribute="leading" secondItem="L3C-OP-eZU" secondAttribute="leading" id="e5E-ad-j7Y"/>
+                <constraint firstItem="L3C-OP-eZU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="eYi-IP-5mh"/>
                 <constraint firstItem="24N-FJ-LjA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="g6n-lD-fBr"/>
+                <constraint firstItem="UVx-4T-I5f" firstAttribute="leading" secondItem="Rmb-0f-TYz" secondAttribute="leading" id="upP-81-shZ"/>
+                <constraint firstItem="WEq-vh-jLn" firstAttribute="top" secondItem="Rmb-0f-TYz" secondAttribute="bottom" constant="8" id="wWk-ui-l51"/>
+                <constraint firstItem="WEq-vh-jLn" firstAttribute="trailing" secondItem="Rmb-0f-TYz" secondAttribute="trailing" constant="-16" id="yZi-fI-zW0"/>
             </constraints>
+            <point key="canvasLocation" x="40" y="73"/>
         </view>
     </objects>
     <resources>

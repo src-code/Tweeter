@@ -24,9 +24,12 @@ typedef void (^TweetFetcherCallback)(Tweet *tweet, NSError* error);
 - (void)getUser:(NSString *)screenname callback:(UserFetcherCallback)callback;
 - (void)getUserTweets:(TweetListFetcherCallback)callback;
 - (void)getUserTweets:(TweetListFetcherCallback)callback user:(User *)user;
+- (void)getUserMentions:(TweetListFetcherCallback)callback;
 - (void)favoriteTweet:(Tweet *)tweet callback:(TweetFetcherCallback) callback;
 - (void)unfavoriteTweet:(Tweet *)tweet callback:(TweetFetcherCallback) callback;
 - (void)retweetTweet:(Tweet *)tweet callback:(TweetFetcherCallback) callback;
 - (void)unretweetTweet:(Tweet *)tweet callback:(TweetFetcherCallback) callback;
+- (void)sendTweet:(NSString *)tweetText callback:(TweetFetcherCallback)callback;
+- (void)sendTweet:(NSString *)tweetText replyTo:(NSString *)replyTo callback:(TweetFetcherCallback)callback;
 
 @end

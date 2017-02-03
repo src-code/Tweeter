@@ -10,10 +10,9 @@
 #import "TweetTableViewCell.h"
 #import "TwitterClient.h"
 #import "NavigationManager.h"
+#import "ComposeViewController.h"
 
-@interface TweetListViewController () <UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
-@property (nonatomic, strong) NSArray *tweets;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@interface TweetListViewController () <UITableViewDataSource, UITableViewDelegate>
 @end
 
 @implementation TweetListViewController
@@ -90,5 +89,18 @@
     [[NavigationManager sharedInstance] showUser:cell.tweet.user];
 }
 
+#pragma mark - ComposeTweetDelegate
+
+-(void)tweetCreated:(Tweet *)tweet {
+    NSLog(@"New tweet created, will add to TweetListTableView");
+    [self.tweets insertObject:tweet atIndex:0];
+    
+    NSArray *insertIndexPaths = [NSArray arrayWithObjects:
+                                 [NSIndexPath indexPathForRow:0 inSection:0],
+                                 nil];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
 
 @end

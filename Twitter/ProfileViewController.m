@@ -26,8 +26,8 @@
     } else {
         // Logged-in user. Get the screenname from stored preferences
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *screenname = [defaults stringForKey:@"screenname"];
-        [self fetchUserAndRenderHeader:screenname];
+        NSString *userId = [defaults stringForKey:@"userId"];
+        [self fetchUserAndRenderHeader:userId];
     }
 }
 

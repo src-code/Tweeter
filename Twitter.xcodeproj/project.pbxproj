@@ -23,7 +23,6 @@
 		B200EAD61E429D6500DDCD7E /* NavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B200EAD51E429D6500DDCD7E /* NavigationManager.m */; };
 		B200EADA1E42AFFA00DDCD7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B200EAD81E42AFFA00DDCD7E /* ProfileViewController.m */; };
 		B200EADF1E42B6AC00DDCD7E /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B200EADD1E42B6AC00DDCD7E /* MentionsViewController.m */; };
-		B200EAE01E42B6AC00DDCD7E /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B200EADE1E42B6AC00DDCD7E /* MentionsViewController.xib */; };
 		B200EAE41E430C0A00DDCD7E /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B200EAE21E430C0A00DDCD7E /* ComposeViewController.m */; };
 		B200EAE51E430C0A00DDCD7E /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B200EAE31E430C0A00DDCD7E /* ComposeViewController.xib */; };
 		B200EAE91E43C5FE00DDCD7E /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B200EAE71E43C5FE00DDCD7E /* TweetViewController.m */; };
@@ -65,7 +64,6 @@
 		B200EAD81E42AFFA00DDCD7E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		B200EADC1E42B6AC00DDCD7E /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
 		B200EADD1E42B6AC00DDCD7E /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
-		B200EADE1E42B6AC00DDCD7E /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		B200EAE11E430C0A00DDCD7E /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		B200EAE21E430C0A00DDCD7E /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		B200EAE31E430C0A00DDCD7E /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 				B200EAD81E42AFFA00DDCD7E /* ProfileViewController.m */,
 				B200EADC1E42B6AC00DDCD7E /* MentionsViewController.h */,
 				B200EADD1E42B6AC00DDCD7E /* MentionsViewController.m */,
-				B200EADE1E42B6AC00DDCD7E /* MentionsViewController.xib */,
 				B200EAE11E430C0A00DDCD7E /* ComposeViewController.h */,
 				B200EAE21E430C0A00DDCD7E /* ComposeViewController.m */,
 				B200EAE31E430C0A00DDCD7E /* ComposeViewController.xib */,
@@ -275,7 +272,6 @@
 				B200EA9B1E3FB9CA00DDCD7E /* TweetListViewController.xib in Resources */,
 				B200EAEA1E43C5FE00DDCD7E /* TweetViewController.xib in Resources */,
 				B200EAA01E3FC82700DDCD7E /* TweetTableViewCell.xib in Resources */,
-				B200EAE01E42B6AC00DDCD7E /* MentionsViewController.xib in Resources */,
 				B200EAE51E430C0A00DDCD7E /* ComposeViewController.xib in Resources */,
 				B200EAF01E43EF1B00DDCD7E /* ProfileHeaderView.xib in Resources */,
 			);

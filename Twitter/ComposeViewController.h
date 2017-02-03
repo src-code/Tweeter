@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
+
+@protocol ComposeTweetDelegate <NSObject>
+- (void)tweetCreated:(Tweet *)tweet;
+@end
 
 @interface ComposeViewController : UIViewController
-
+@property id <ComposeTweetDelegate> delegate;
 @end
