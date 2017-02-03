@@ -1,29 +1,31 @@
 //
-//  ViewController.m
+//  LoginViewController.m
 //  Twitter
 //
 //  Created by  Steve Carlson (Media Engineering) on 1/30/17.
 //  Copyright © 2017 Steve Carlson. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoggedOutViewController.h"
+#import "NavigationManager.h"
 
-@interface ViewController ()
+@interface LoggedOutViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoggedOutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onLogin:(id)sender {
+    [[NavigationManager sharedInstance] logIn];
+}
 
 @end
