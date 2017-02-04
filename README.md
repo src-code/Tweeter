@@ -1,8 +1,8 @@
-# Project 3 - *Name of App Here*
+# Project 3 - *Tweeter*
 
-**Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com).
+**Tweeter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com).
 
-Time spent: **X** hours spent in total
+Time spent: **40** hours spent in total
 
 ## User Stories
 
@@ -16,31 +16,31 @@ The following **required** functionality is completed:
 - [ ] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 - [ ] Hamburger menu
 - [ ] Dragging anywhere in the view should reveal the menu.
-      - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
-      - [ ] Profile page
-         - [ ] Contains the user header view (implemented as a custom view)
-            - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
-            - [ ] Home Timeline
-               - [ ] Tapping on a user image should bring up that user's profile page
+- [ ] The menu should include links to your profile, the home timeline, and the mentions view.
+- [ ] Profile page
+- [ ] Contains the user header view (implemented as a custom view)
+- [ ] Contains a section with the users basic stats: # tweets, # following, # followers
+- [ ] Home Timeline
+- [ ] Tapping on a user image should bring up that user's profile page
 
-               The following **optional** features are implemented:
+The following **optional** features are implemented:
 
-               - [ ] When composing, you should have a countdown in the upper right for the tweet limit.
-               - [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
-               - [ ] Retweeting and favoriting should increment the retweet and favorite count.
-               - [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-               - [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
-               - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
-               - [ ] Pulling down the profile page should blur and resize the header image.
-               - [ ] Account switching
-                  - [ ] Long press on tab bar to bring up Account view with animation
-                     - [ ] Tap account to switch to
-                        - [ ] Include a plus button to Add an Account
-                           - [ ] Swipe to delete an account
+- [ ] When composing, you should have a countdown in the upper right for the tweet limit.
+- [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+- [ ] Retweeting and favoriting should increment the retweet and favorite count.
+- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
+- [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+- [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [ ] Pulling down the profile page should blur and resize the header image.
+- [ ] Account switching
+- [ ] Long press on tab bar to bring up Account view with animation
+- [ ] Tap account to switch to
+- [ ] Include a plus button to Add an Account
+- [ ] Swipe to delete an account
 
-                           The following **additional** features are implemented:
+The following **additional** features are implemented:
 
-                           - [ ] List anything else that you can get done to improve the app functionality!
+- [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough
 
@@ -52,7 +52,6 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
 
 ## License
 
