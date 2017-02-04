@@ -233,7 +233,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="contentLabel" destination="uAh-Dj-WAp" id="e2D-Yh-Ijf"/>
+                <outlet property="contentLabel" destination="uAh-Dj-WAp" id="pYK-nu-fOz"/>
                 <outlet property="favoriteButton" destination="WMt-Eh-szY" id="w7R-64-Kd8"/>
                 <outlet property="favoriteButtonLabel" destination="J3t-Eu-ZMp" id="8PK-3E-QTg"/>
                 <outlet property="handleLabel" destination="PcN-xL-lHx" id="0qa-89-lfc"/>

@@ -55,6 +55,8 @@
 
 - (UIViewController *)loggedInVC
 {
+    UIColor *twitterBlueColor = [UIColor colorWithRed:0.11 green:0.63 blue:0.95 alpha:1.0];
+
     // Create ViewControllers
     TweetListViewController *tweetListVC = [[TweetListViewController alloc] initWithNibName:@"TweetListViewController" bundle:nil];
     tweetListVC.title = @"";
@@ -72,7 +74,7 @@
     // Create navigation controllers
     UINavigationController *homeNavController = [[UINavigationController alloc] initWithRootViewController:tweetListVC];
     homeNavController.navigationBar.tintColor = [UIColor whiteColor];
-    homeNavController.navigationBar.barTintColor = [UIColor colorWithRed:0.11 green:0.63 blue:0.95 alpha:1.0];
+    homeNavController.navigationBar.barTintColor = twitterBlueColor;
     homeNavController.title = @"Home";
     UIBarButtonItem *signoutBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(logOut)];
     tweetListVC.navigationItem.leftBarButtonItem = signoutBarButtonItem;
@@ -81,9 +83,14 @@
     tweetListVC.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"twiiter-logo-40-alt"]];
     
     UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileVC];
+    profileNavController.navigationBar.tintColor = [UIColor whiteColor];
+    profileNavController.navigationBar.barTintColor = twitterBlueColor;
     profileNavController.title = @"Profile";
+    
     UINavigationController *mentionsNavController = [[UINavigationController alloc] initWithRootViewController:mentionsVC];
     mentionsNavController.title = @"Mentions";
+    mentionsNavController.navigationBar.tintColor = [UIColor whiteColor];
+    mentionsNavController.navigationBar.barTintColor = twitterBlueColor;
     
     // Create tab bar view controller
     self.tabBarController = [[UITabBarController alloc] init];
